@@ -1,13 +1,10 @@
 import { RichTextEditor } from "@mantine/tiptap";
 import Placeholder from "@tiptap/extension-placeholder";
-import { useEditor } from "@tiptap/react";
+import { useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
-import { useState } from "react";
 
 export default function CardContent() {
-  const [isEditing, setIsEditing] = useState(false);
-
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -19,12 +16,11 @@ export default function CardContent() {
         defaultAlignment: "left",
       }),
     ],
-    onFocus() {
-      setIsEditing(true);
-    },
-    onBlur() {
-      setIsEditing(false);
-    },
+  });
+
+  const isEditing = useEditorState({
+    editor,
+    selector: (ctx) => ctx.editor.isFocused,
   });
 
   return (
@@ -48,6 +44,7 @@ export default function CardContent() {
             left: "50%",
             transform: "translateX(-50%)",
           }}
+          onPointerDownCapture={(e) => e.preventDefault()}
         >
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
