@@ -110,6 +110,6 @@ code {
   background: var(--code-bg);
 }
 
-.tiptap {
+.tiptap.ProseMirror {
   height: 100%;
 }
