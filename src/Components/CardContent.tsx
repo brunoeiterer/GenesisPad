@@ -43,13 +43,38 @@ export default function CardContent() {
             border: "none",
             left: "50%",
             transform: "translateX(-50%)",
+            flexWrap: "nowrap",
           }}
           onPointerDownCapture={(e) => e.preventDefault()}
         >
           <RichTextEditor.ControlsGroup>
             <RichTextEditor.Bold />
+            <RichTextEditor.Strikethrough />
             <RichTextEditor.Italic />
             <RichTextEditor.Underline />
+            <RichTextEditor.Code />
+            <RichTextEditor.ClearFormatting />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.H1 />
+            <RichTextEditor.H2 />
+            <RichTextEditor.H3 />
+            <RichTextEditor.H4 />
+            <RichTextEditor.H5 />
+            <RichTextEditor.H6 />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.BulletList />
+            <RichTextEditor.OrderedList />
+          </RichTextEditor.ControlsGroup>
+
+          <RichTextEditor.ControlsGroup>
+            <RichTextEditor.AlignLeft />
+            <RichTextEditor.AlignCenter />
+            <RichTextEditor.AlignRight />
+            <RichTextEditor.AlignJustify />
           </RichTextEditor.ControlsGroup>
         </RichTextEditor.Toolbar>
       )}
